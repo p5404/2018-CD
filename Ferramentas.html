@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html class="gr__ulusofona_ulisboa_pt"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="./Ferramentas_files/labs-sd.css">
+
+    <link href="./Ferramentas_files/prettify.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="./Ferramentas_files/prettify.js.download"></script>
+
+    <title>Ferramentas</title>
+</head>
+
+<body onload="prettyPrint()" data-gr-c-s-loaded="true">
+
+<div class="contexto">
+    <p>
+        <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/index.html">Labs SD</a> &gt;
+    </p>
+</div>
+
+<div class="titulo" id="1">
+    <h1>Ferramentas</h1>
+</div>
+
+<!--div class="objectivos">
+    <h2>Objectivos da semana</h2>
+    <ul>
+        <!--li>Instalar/testar o software necessário</li-->
+        <!--li>Usar o Maven para compilar projectos Java</li>
+        <li>Usar o Eclipse para programar e depurar projectos Java</li>
+        <li>Usar <i>sockets</i> para transferir dados entre cliente e servidor</li>
+    </ul>
+</div-->
+
+<div class="indice">
+</div>
+
+<div class="corpo">
+
+<p>
+As ferramentas para o desenvolvimento do projeto são: o Java (plataforma) e o Maven (construção).
+</p>
+<p>
+Esta página contém textos introdutórios a cada uma das ferramentas e um exercício.
+</p>
+
+<p>Em primeiro lugar, antes de começar, é necessário <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/software/index.html">instalar o software</a>.</p>
+
+<p>&nbsp;</p>
+
+<h2>Java</h2>
+
+<p>O Java Developer Kit (JDK) é um conjunto de ferramentas para programação na linguagem Java.<br> As mais importantes são o <tt>javac</tt> que compila os programas e o <tt>java</tt> que lança as aplicações.</p>
+
+<p><tt>javac</tt> e <tt>java</tt> são suficientes para construir pequenos programas, mas para programas de maior dimensão, é muito útil ter:</p>
+<ul>
+    <li>Uma ferramenta que dê suporte a todas as tarefas de forma integrada, incluíndo a gestão de dependências: <b>Maven</b>;</li>
+    <li>Um ambiente que apoie o programador em todas as tarefas: <b>Eclipse</b>;</li>
+    <li>Bibliotecas para sistematizar os testes: <b>JUnit</b>.
+    <!-- e
+    para simular objectos durante os testes - <b>JMockit</b>.-->
+    </li>
+</ul>
+<p>
+A tabela seguinte resume as utilizações mais comuns do JDK, Maven, e Eclipse:
+</p>
+<ul>
+    <li>
+    <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/java-tools-ref-card.pdf">Java tools reference card</a>
+    <img src="./Ferramentas_files/pdf.png" alt="PDF">
+    </li>
+</ul>
+<p>
+A programação em Java para Sistemas Distribuídos deve ter em conta a
+<a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/java-synch/index.html">concorrência e sincronização</a>.<br>
+O <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/exceptions/index.html">tratamento de exceções</a> é também um aspeto muito importante, e que irá ser especialmente importante para lidar com faltas de comunicação.</p>
+
+<p>&nbsp;</p>
+
+<h2>Maven</h2>
+<p>A ferramenta Maven é, talvez, a mais importante logo a seguir ao próprio JDK. O uso do Maven é considerado obrigatório. Em Computação Distribuída, cabe ao aluno a escolha do IDE que quiser utilizar. Nas aulas o docente irá utilizar o IntelliJ.</p>
+<p>O Maven desempenha o papel muito importante de automatizar toda a construção do código e de explicitar dependências de outros programas. Todos os programas devem ter a configuração Maven no ficheiro <b>pom.xml</b> - para que possam ser (re)construídos de forma repetível.</p>
+
+<ul>
+    <li><a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/maven/index.html">Introdução ao Maven</a></li>
+</ul>
+<ul>
+    <li>
+        <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/java-app_config.zip">Exemplo de aplicação Java
+        <img src="./Ferramentas_files/zip.png" alt="ZIP"></a><br>
+        - utiliza o Maven para compilar e executar<br>
+        - utiliza ficheiro com propriedades de configuração,
+        algumas delas preenchidas dinamicamente pelo Maven
+
+    </li>
+</ul>
+<ul>
+    <li>
+        <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/java-lib.zip">Exemplo de biblioteca Java
+        <img src="./Ferramentas_files/zip.png" alt="ZIP"></a><br>
+        - permite agrupar um conjunto de classes comuns, que podem depois ser reutilizadas por outros programas.<br>
+        - o comando <tt>mvn install</tt> disponibiliza o módulo no repositório local.<br>
+        - o módulo instalado pode depois ser usado como dependência através das coordenadas (<i>groupId</i>, <i>artifactId</i>, e <i>version</i>).
+    </li>
+</ul>
+
+<p>
+Para cada exemplo, estudar o código fonte e o ficheiro <tt>pom.xml</tt>.<br>
+Compilar e executar o programa através da linha de comando <tt>mvn</tt>, seguindo as instruções no ficheiro <tt>readme.txt</tt>.<br>
+</p>
+
+<h3>JUnit</h3>
+<p>
+Para garantir a qualidade do código, é necessário produzir testes que incidem sobre diferentes módulos e aspetos das soluções.
+</p>
+<ul>
+    <li>
+Testes unitários (<tt>Test</tt>) - são testes que verificam o comportamento de objetos individuais através de invocações <i>locais</i>.
+    </li>
+    <li>
+Testes de integração (<tt>IT</tt>) - são testes que verificam o comportamento de todo o sistema através de invocações <i>remotas</i>.
+    </li>
+</ul>
+<p>
+O JUnit é uma biblioteca Java que ajuda a construir e executar testes ao código.
+</p>
+<p>
+Exemplo e mais informação: <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/junit/index.html">JUnit</a>
+</p>
+<!--ul>
+    <li>
+        <a href="junit-app.zip">Exemplo de aplicação Java com testes JUnit
+        <img src="../_img/zip.png" alt="ZIP" ></a><br />
+        - utiliza o Maven para compilar e testar<br />
+        - comando <tt>mvn test</tt>
+    </li-->
+    <!--li>
+        <a href="jmockit-app.zip">Exemplo de aplicação Java com testes JMockit
+        <img src="../_img/zip.png" alt="ZIP" ></a>
+        - utiliza o Maven para compilar e testar,
+        com objectos simulados.
+    </li-->
+<!--/ul-->
+
+
+<p>&nbsp;</p>
+
+<h2>Eclipse</h2>
+<p>
+O Eclipse pode ser configurado por cima do JDK (Eclipse/JDK), ou então por cima também do Maven (Eclipse/Maven/JDK).
+</p>
+<ul>
+    <li><a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/eclipse/maven/index.html">Maven no Eclipse</a></li>
+    <li><a href="http://www.slideshare.net/MiguelLPardal/eclipse-workshop-presentation">Dicas de utilização do Eclipse</a></li>
+</ul>
+<ul>
+    <li>
+    Voltar ao exemplo de <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/java-app_config.zip">aplicação Java</a>:
+    </li>
+    <ul>
+        <li>
+        Configurar o projecto no Eclipse, seguindo as indicações no ficheiro <tt>readme.txt</tt>.
+        </li>
+        <li>
+		Experimente executar através da linha de comando <tt>mvn</tt>.
+		<!--  e executar através do Eclipse (opção "run") -->
+        </li>
+        <li>
+        Experimente executar através do Maven dentro do Eclipse (m2eclipse): "Run As", "Maven Build"
+        </li>
+    </ul>
+    <li>
+    Experimente as funcionalidades de depuração (<i>debug</i>):
+    </li>
+    <ul>
+        <li>Criar um <i>breakpoint</i> no programa e fazer <i>debug</i>.</li>
+        <li>Alterar os argumentos do programa e inspecionar as variáveis durante a execução.</li>
+    </ul>
+</ul>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<h2>Exercício a resolver até ao fim da aula</h2>
+
+<p>
+    Neste exercício vamos construir uma pequena aplicação java que, para já, apenas apresenta os argumentos e configurações que recebe.
+    Estas técnicas são ilustrativas do que muitas vezes é necessário fazer nas nossas aplicações.<br>
+</p>
+<p>
+    O Maven é uma ferramenta muito poderosa que facilita a gestão de dependências de um determinado projecto. Adicionalmente permite ainda automatizar a fase de compilação e de testes.
+    No seguinte exercício iremos explorar alguns dos mecanismos que o Maven disponibiliza.
+</p>
+<ol>
+    <li>Obter o exemplo  <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/mainApp.zip">MainApp
+    <img src="./Ferramentas_files/zip.png" alt="ZIP"></a>
+    </li>
+    <ol type="a">
+        <li>Configurar o projecto no Eclipse  (o <tt>readme.txt</tt> contém instruções mais detalhadas)  </li>
+        <li>Estudar o código fonte (pasta src) e o ficheiro <tt>pom.xml</tt>               </li>
+        <li>Compilar e executar o projecto.
+        (Fazer <tt>mvn compile</tt> e depois <tt>mvn exec:java</tt>)
+        </li>
+    </ol>
+<br>
+    <li>Na pasta <tt>src/main/java/pt/tecnico/sd</tt> abrir a classe <b>App</b></li>
+    <ol type="a">
+        <li>Descomentar o código no método <tt>main()</tt> e voltar a compilar o projecto</li>
+        <li>Há um erro, consegue perceber qual é?<br></li>
+        <li>
+            Abrir o ficheiro <tt>pom.xml</tt> e adicionar o seguinte excerto dentro da tag "&lt;dependencies&gt;" (Basta descomentar):
+            <code>
+                <br>
+                <p>
+                &lt;dependency&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;pt.tecnico.sd&lt;/groupId&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;ConfigHelper&lt;/artifactId&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;<br>
+                &lt;/dependency<br>
+                </p>
+            </code>
+            Desta forma estamos a declarar que o projecto tem uma dependência do módulo ConfigHelper.
+        </li>
+        <li>Voltar a tentar compilar o projecto </li>
+    </ol>
+<br>
+    <li>Há um novo erro, consegue perceber qual é? </li>
+    <ol type="a">
+        <li>Obter o exemplo  <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/ConfigHelper.zip">ConfigHelper
+        <img src="./Ferramentas_files/zip.png" alt="ZIP"></a>
+        </li>
+        <li>Configurar o projecto no Eclipse  (<tt>readme.txt</tt> com instruções mais detalhadas)  </li>
+        <li>Estudar o código fonte (pasta <tt>src</tt>) e o ficheiro <tt>pom.xml</tt>               </li>
+        <li>Para resolver o problema temos de disponibilizar a dependência ConfigHelper na máquina de desenvolvimento (fazer <tt>mvn install</tt>)</li>
+        <li>Voltar a compilar o projecto <b>MainApp</b> e executá-lo</li>
+    </ol>
+<!--
+</br>
+    <li>
+    Quando corremos mvn install no projecto <b>ConfigHelper</b> corremos todas as fases do mvn anteriores, incluindo a fase de testes:
+    </li>
+    <ol type="a">
+        <li>        Quantos testes foram executados?        </li>
+		<li>        Na pasta <tt>src/test/pt/tecnico/sd</tt> adicionar um teste na classe <tt>AppTest.java</tt>.		</li>
+        <li>        Para isso deve criar um novo método e adicionar-lhe a anotação @Test.        </li>
+		<li>        Voltar a correr mvn install e confirmar que há mais um teste a ser executado.        </li>
+        <li>        No test3 descomentar a linha "assert(false)" e voltar a fazer mvn install, que aconteceu?        </li>
+	</ol>
+-->
+</ol>
+
+<hr>
+
+<div class="rodape">
+<p>
+© Docentes de Computação Distribuída, Dep. Eng. Informática, <a href="https://www.ulusofona.pt/">Universidade Lusófona</a><br>
+</p>
+</div>
+
+
+
+</div></body></html>
