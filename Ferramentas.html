@@ -4,12 +4,11 @@
     <link rel="stylesheet" type="text/css" href="./Ferramentas_files/labs-sd.css">
 
     <link href="./Ferramentas_files/prettify.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="./Ferramentas_files/prettify.js.download"></script>
 
     <title>Ferramentas</title>
 </head>
 
-<body onload="prettyPrint()" data-gr-c-s-loaded="true">
+<body>
 
 <div class="contexto">
     <p>
@@ -26,7 +25,7 @@
     <ul>
         <!--li>Instalar/testar o software necessário</li-->
         <!--li>Usar o Maven para compilar projectos Java</li>
-        <li>Usar o Eclipse para programar e depurar projectos Java</li>
+        <li>Usar o IDE para programar e depurar projectos Java</li>
         <li>Usar <i>sockets</i> para transferir dados entre cliente e servidor</li>
     </ul>
 </div-->
@@ -43,25 +42,27 @@ As ferramentas para o desenvolvimento do projeto são: o Java (plataforma) e o M
 Esta página contém textos introdutórios a cada uma das ferramentas e um exercício.
 </p>
 
-<p>Em primeiro lugar, antes de começar, é necessário <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/software/index.html">instalar o software</a>.</p>
+<p>Em primeiro lugar, antes de começar, é necessário <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/software/index.html">instalar o software</a>.
+</p>
 
 <p>&nbsp;</p>
 
 <h2>Java</h2>
 
-<p>O Java Developer Kit (JDK) é um conjunto de ferramentas para programação na linguagem Java.<br> As mais importantes são o <tt>javac</tt> que compila os programas e o <tt>java</tt> que lança as aplicações.</p>
+<p>O Java Developer Kit (JDK) é um conjunto de ferramentas para programação na linguagem Java.<br>
+As mais importantes são o <tt>javac</tt> que compila os programas e o <tt>java</tt> que lança as aplicações.</p>
 
 <p><tt>javac</tt> e <tt>java</tt> são suficientes para construir pequenos programas, mas para programas de maior dimensão, é muito útil ter:</p>
 <ul>
     <li>Uma ferramenta que dê suporte a todas as tarefas de forma integrada, incluíndo a gestão de dependências: <b>Maven</b>;</li>
-    <li>Um ambiente que apoie o programador em todas as tarefas: <b>Eclipse</b>;</li>
+    <li>Um ambiente que apoie o programador em todas as tarefas: <b>IDE</b>;</li>
     <li>Bibliotecas para sistematizar os testes: <b>JUnit</b>.
     <!-- e
     para simular objectos durante os testes - <b>JMockit</b>.-->
     </li>
 </ul>
 <p>
-A tabela seguinte resume as utilizações mais comuns do JDK, Maven, e Eclipse:
+A tabela seguinte resume as utilizações mais comuns do JDK, Maven, e IDE:
 </p>
 <ul>
     <li>
@@ -72,13 +73,16 @@ A tabela seguinte resume as utilizações mais comuns do JDK, Maven, e Eclipse:
 <p>
 A programação em Java para Sistemas Distribuídos deve ter em conta a
 <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/java-synch/index.html">concorrência e sincronização</a>.<br>
-O <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/exceptions/index.html">tratamento de exceções</a> é também um aspeto muito importante, e que irá ser especialmente importante para lidar com faltas de comunicação.</p>
+O <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/exceptions/index.html">tratamento de exceções</a>
+é também um aspeto muito importante, e que irá ser especialmente importante para lidar com faltas de comunicação.</p>
 
 <p>&nbsp;</p>
 
 <h2>Maven</h2>
-<p>A ferramenta Maven é, talvez, a mais importante logo a seguir ao próprio JDK. O uso do Maven é considerado obrigatório. Em Computação Distribuída, cabe ao aluno a escolha do IDE que quiser utilizar. Nas aulas o docente irá utilizar o IntelliJ.</p>
-<p>O Maven desempenha o papel muito importante de automatizar toda a construção do código e de explicitar dependências de outros programas. Todos os programas devem ter a configuração Maven no ficheiro <b>pom.xml</b> - para que possam ser (re)construídos de forma repetível.</p>
+<p>A ferramenta Maven é, talvez, a mais importante logo a seguir ao próprio JDK. O uso do Maven é considerado obrigatório.
+Em Computação Distribuída, cabe ao aluno a escolha do IDE que quiser utilizar. Nas aulas o docente irá utilizar o IntelliJ.</p>
+<p>O Maven desempenha o papel muito importante de automatizar toda a construção do código e de explicitar dependências de outros programas.
+Todos os programas devem ter a configuração Maven no ficheiro <b>pom.xml</b> - para que possam ser (re)construídos de forma repetível.</p>
 
 <ul>
     <li><a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/maven/index.html">Introdução ao Maven</a></li>
@@ -144,13 +148,13 @@ Exemplo e mais informação: <a href="http://disciplinas.tecnico.ulisboa.pt/leic
 
 <p>&nbsp;</p>
 
-<h2>Eclipse</h2>
+<h2>IDE</h2>
 <p>
-O Eclipse pode ser configurado por cima do JDK (Eclipse/JDK), ou então por cima também do Maven (Eclipse/Maven/JDK).
+O IDE pode ser configurado por cima do JDK (IDE/JDK), ou então por cima também do Maven (IDE/Maven/JDK).
 </p>
 <ul>
-    <li><a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/eclipse/maven/index.html">Maven no Eclipse</a></li>
-    <li><a href="http://www.slideshare.net/MiguelLPardal/eclipse-workshop-presentation">Dicas de utilização do Eclipse</a></li>
+    <li><a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/IDE/maven/index.html">Maven no IDE</a></li>
+    <li><a href="http://www.slideshare.net/MiguelLPardal/IDE-workshop-presentation">Dicas de utilização do IDE</a></li>
 </ul>
 <ul>
     <li>
@@ -158,14 +162,14 @@ O Eclipse pode ser configurado por cima do JDK (Eclipse/JDK), ou então por cima
     </li>
     <ul>
         <li>
-        Configurar o projecto no Eclipse, seguindo as indicações no ficheiro <tt>readme.txt</tt>.
+        Configurar o projecto no IDE, seguindo as indicações no ficheiro <tt>readme.txt</tt>.
         </li>
         <li>
 		Experimente executar através da linha de comando <tt>mvn</tt>.
-		<!--  e executar através do Eclipse (opção "run") -->
+		<!--  e executar através do IDE (opção "run") -->
         </li>
         <li>
-        Experimente executar através do Maven dentro do Eclipse (m2eclipse): "Run As", "Maven Build"
+        Experimente executar através do Maven dentro do IDE (m2IDE): "Run As", "Maven Build"
         </li>
     </ul>
     <li>
@@ -196,7 +200,7 @@ O Eclipse pode ser configurado por cima do JDK (Eclipse/JDK), ou então por cima
     <img src="./Ferramentas_files/zip.png" alt="ZIP"></a>
     </li>
     <ol type="a">
-        <li>Configurar o projecto no Eclipse  (o <tt>readme.txt</tt> contém instruções mais detalhadas)  </li>
+        <li>Configurar o projecto no IDE  (o <tt>readme.txt</tt> contém instruções mais detalhadas)  </li>
         <li>Estudar o código fonte (pasta src) e o ficheiro <tt>pom.xml</tt>               </li>
         <li>Compilar e executar o projecto.
         (Fazer <tt>mvn compile</tt> e depois <tt>mvn exec:java</tt>)
@@ -229,8 +233,8 @@ O Eclipse pode ser configurado por cima do JDK (Eclipse/JDK), ou então por cima
         <li>Obter o exemplo  <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/ConfigHelper.zip">ConfigHelper
         <img src="./Ferramentas_files/zip.png" alt="ZIP"></a>
         </li>
-        <li>Configurar o projecto no Eclipse  (<tt>readme.txt</tt> com instruções mais detalhadas)  </li>
-        <li>Estudar o código fonte (pasta <tt>src</tt>) e o ficheiro <tt>pom.xml</tt>               </li>
+        <li>Configurar o projecto no IDE  (<tt>readme.txt</tt> com instruções mais detalhadas)</li>
+        <li>Estudar o código fonte (pasta <tt>src</tt>) e o ficheiro <tt>pom.xml</tt></li>
         <li>Para resolver o problema temos de disponibilizar a dependência ConfigHelper na máquina de desenvolvimento (fazer <tt>mvn install</tt>)</li>
         <li>Voltar a compilar o projecto <b>MainApp</b> e executá-lo</li>
     </ol>
