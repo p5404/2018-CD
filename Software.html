@@ -1,11 +1,7 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-    <link rel="stylesheet" type="text/css" href="./css/labs-sd.css">
-
     <title>Software</title>
 </head>
 
@@ -85,8 +81,8 @@ O procedimento para definir variáveis de ambiente depende do sistema operativo:
         <li>Obter</li>
         <ul>
             <li>
-                <a href="http://maven.apache.org/download.cgi">MVN 3.3.9</a>
-                <small>(preferência por esta versão por ser a que é utilizada internamente no Eclipse recomendado)</small>
+                <a href="http://maven.apache.org/download.cgi">MVN 3.5.4</a>
+                <!-- small>(preferência por esta versão por ser a que é utilizada internamente no Eclipse recomendado)</small -->
             </li>
         </ul>
         <li>Instalar</li>
@@ -121,8 +117,10 @@ O procedimento para definir variáveis de ambiente depende do sistema operativo:
     </ul>
 
     <li>
-    <b>Eclipse for Java Enterprise Edition, Eclipse JEE</b><br />
-    Ambiente integrado de desenvolvimento para a plataforma Java, versão empresarial</li>
+        <b>Instalar o IDE.</b><br/>
+        <ul>
+        <li>Eclipse for Java Enterprise Edition, Eclipse JEE<br/>
+            Ambiente integrado de desenvolvimento para a plataforma Java, versão empresarial</li>
     <ul>
         <li>Obter o arquivo que contém o executável de Eclipse e ficheiros associados:</li>
         <ul>
@@ -172,16 +170,17 @@ O procedimento para definir variáveis de ambiente depende do sistema operativo:
             preencher endereços de origem e escolher pacotes desejados</li-->
         </ul>
     </ul>
+    </ul>
 
     <li>
     <b>Apache jUDDI</b><br />
     Servidor de nomes para Web Services que segue a norma UDDI
-    (Universal Description, Discovery, and Integration)</li>
+    <a href="https://juddi.apache.org/docs/3.2/juddi-guide/html/">(Universal Description, Discovery, and Integration)</a></li>
     <ul>
         <li>Obter</li>
         <ul>
             <!--li><a href="http://www.eu.apache.org/dist/juddi/juddi/3.3.5/">jUDDI distro</a></li-->
-            <li><a href="./01-tools/juddi-3.3.5_tomcat-7.0.82_9090.zip">jUDDI 3.3.5</a> <small>(configured for port <b>9090</b>)</small></li>
+            <li><a href="http://mirrors.up.pt/pub/apache/juddi/juddi/3.3.5/">jUDDI 3.3.5</a> <small>(configured for port <b>9090</b>)</small></li>
         </ul>
         <li>Instalar</li>
         <ul>
@@ -207,9 +206,7 @@ O procedimento para definir variáveis de ambiente depende do sistema operativo:
                     <li><tt>startup.sh</tt> (Linux e Mac)</li>
                     <li><tt>startup.bat</tt> (Windows)</li>
                 </ul>
-            <li>Para confirmar funcionamento,
-                aceder à página de índice do jUDDI,
-                que dá também acesso à interface de administração<br />
+            <li>Para confirmar funcionamento, aceder à página de índice do jUDDI, que dá também acesso à interface de administração<br />
                 <a href="http://localhost:9090/juddiv3/">http://localhost:9090/juddiv3/</a>
             </li>
             <ul>
