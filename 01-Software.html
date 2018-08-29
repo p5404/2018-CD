@@ -159,7 +159,7 @@ O procedimento para definir variáveis de ambiente depende do sistema operativo:
                     <li>m2e connector for jaxws-maven-plugin</li><!-- if not installed, handlers config file may not be found on Run As, Maven, exec:java<!-->
                     <li>m2e connector for maven-dependency-plugin</li>
                     <li>m2e connector for maven-remote-resources-plugin</li>
-					<li>m2e connector for org.codehaus.mojo:jaxb2-maven-plugin and org.jvnet.jaxb2.maven2:maven-jaxb2-plugin</li>
+					<li>m2e connector for org.codehaus.mojo:jaxb2-maven-plugin</li>
                     <li>m2e-apt</li>
                     <li>m2e-egit</li>
                 </ul>
@@ -190,7 +190,7 @@ O procedimento para definir variáveis de ambiente depende do sistema operativo:
             <li>Em Linux ou Mac,
                 tornar os <i>scripts</i> de lançamento executáveis:<br />
                 <tt>chmod +x juddi-3.3.5_tomcat-7.0.82_9090/bin/*.sh</tt>
-            <!--li><b>IMPORTANTE</b>: Configurar o jUDDI para escutar no porto <b>9090</b></li>
+            <!--li><b>IMPORTANTE</b>: Configurar o jUDDI para escutar no porto <b>9090</b></li -->
             <ul>
                 <li>Abrir o ficheiro '...\juddi-distro-3.3.5\juddi-tomcat-3.3.5\conf\server.xml' e alterar a linha 71 para:<br>
                 <tt>&lt;Connector port="9090" protocol="HTTP/1.1"</tt></li>
@@ -199,7 +199,7 @@ O procedimento para definir variáveis de ambiente depende do sistema operativo:
                     <li>juddi-3.3.5_tomcat-7.0.82_9090/webapps/juddiv3/WEB-INF/classes/juddiv3.xml</li>
                     <li>juddi-3.3.5_tomcat-7.0.82_9090/webapps/juddiv3/WEB-INF/classes/META-INF/uddi.xml</li>
                 </ul>
-            </ul-->
+            </ul>
             <li>Para lançar o servidor,
                 basta executar o seguinte comando na pasta <tt>juddi-3.3.5_tomcat-7.0.82_9090/bin</tt>:</li>
                 <ul>
@@ -209,12 +209,11 @@ O procedimento para definir variáveis de ambiente depende do sistema operativo:
             <li>Para confirmar funcionamento, aceder à página de índice do jUDDI, que dá também acesso à interface de administração<br />
                 <a href="http://localhost:9090/juddiv3/">http://localhost:9090/juddiv3/</a>
             </li>
-            <ul>
+            <!-- <ul>
                 <li>utilizador:senha <tt>uddiadmin:da_password1</tt></li>
-            </ul>
+            </ul> -->
         </ul>
     </ul>
-
 </ol>
 
 <hr />

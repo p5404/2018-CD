@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html class="gr__ulusofona_ulisboa_pt"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>Ferramentas</title>
 </head>
@@ -19,7 +19,7 @@
 <!--div class="objectivos">
     <h2>Objectivos da semana</h2>
     <ul>
-        <!--li>Instalar/testar o software necessário</li-->
+        <!-- li>Instalar/testar o software necessário</li-->
         <!--li>Usar o Maven para compilar projectos Java</li>
         <li>Usar o IDE para programar e depurar projectos Java</li>
         <li>Usar <i>sockets</i> para transferir dados entre cliente e servidor</li>
@@ -35,7 +35,7 @@ As ferramentas para o desenvolvimento do projeto são: o Java (plataforma) e o M
 Esta página contém textos introdutórios a cada uma das ferramentas e um exercício.
 </p>
 
-<p>Em primeiro lugar, antes de começar, é necessário <a href="./Software.html">instalar o software</a>.
+<p>Em primeiro lugar, antes de começar, é necessário <a href="./01-Software.html">instalar o software</a>.
 </p>
 
 <p>&nbsp;</p>
@@ -59,14 +59,14 @@ A tabela seguinte resume as utilizações mais comuns do JDK, Maven, e IDE:
 </p>
 <ul>
     <li>
-    <a href="./01-tools/java-tools-ref-card.pdf">Java tools reference card</a>
-    <img src="./Ferramentas_files/pdf.png" alt="PDF">
+    <a href="./Software/java-tools-ref-card.pdf">Java tools reference card</a>
+    <img src="./images/pdf.png" alt="PDF">
     </li>
 </ul>
 <p>
 A programação em Java para Computação Distribuída deve ter em conta a
-<a href="./01-tools/java-synch/index.html">concorrência e sincronização</a>.<br>
-O <a href="./01-tools/exceptions/index.html">tratamento de exceções</a>
+<a href="./01-Java-synch.html">concorrência e sincronização</a>.<br>
+O <a href="./01-Exceptions.html">tratamento de exceções</a>
 é também um aspeto muito importante, e que irá ser especialmente importante para lidar com faltas de comunicação.</p>
 
 <p>&nbsp;</p>
@@ -78,12 +78,12 @@ Em Computação Distribuída, cabe ao aluno a escolha do IDE que quiser utilizar
 Todos os programas devem ter a configuração Maven no ficheiro <b>pom.xml</b> - para que possam ser (re)construídos de forma repetível.</p>
 
 <ul>
-    <li><a href="./01-tools/maven/index.html">Introdução ao Maven</a></li>
+    <li><a href="./01-Maven.html">Introdução ao Maven</a></li>
 </ul>
 <ul>
     <li>
-        <a href="./01-tools/java-app_config.zip">Exemplo de aplicação Java
-        <img src="./Ferramentas_files/zip.png" alt="ZIP"></a><br>
+        <a href="./Software/java-app_config.zip">Exemplo de aplicação Java
+        <img src="./images/zip.png" alt="ZIP"></a><br>
         - utiliza o Maven para compilar e executar<br>
         - utiliza ficheiro com propriedades de configuração,
         algumas delas preenchidas dinamicamente pelo Maven
@@ -92,8 +92,8 @@ Todos os programas devem ter a configuração Maven no ficheiro <b>pom.xml</b> -
 </ul>
 <ul>
     <li>
-        <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/java-lib.zip">Exemplo de biblioteca Java
-        <img src="./Ferramentas_files/zip.png" alt="ZIP"></a><br>
+        <a href="./Software/java-lib.zip">Exemplo de biblioteca Java
+        <img src="./images/zip.png" alt="ZIP"></a><br>
         - permite agrupar um conjunto de classes comuns, que podem depois ser reutilizadas por outros programas.<br>
         - o comando <tt>mvn install</tt> disponibiliza o módulo no repositório local.<br>
         - o módulo instalado pode depois ser usado como dependência através das coordenadas (<i>groupId</i>, <i>artifactId</i>, e <i>version</i>).
@@ -121,7 +121,7 @@ Testes de integração (<tt>IT</tt>) - são testes que verificam o comportamento
 O JUnit é uma biblioteca Java que ajuda a construir e executar testes ao código.
 </p>
 <p>
-Exemplo e mais informação: <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/junit/index.html">JUnit</a>
+Exemplo e mais informação: <a href="01-JUnit.html">JUnit</a>
 </p>
 <!--ul>
     <li>
@@ -146,12 +146,12 @@ Exemplo e mais informação: <a href="http://disciplinas.tecnico.ulisboa.pt/leic
 O IDE pode ser configurado por cima do JDK (IDE/JDK), ou então por cima também do Maven (IDE/Maven/JDK).
 </p>
 <ul>
-    <li><a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/IDE/maven/index.html">Maven no IDE</a></li>
-    <li><a href="http://www.slideshare.net/MiguelLPardal/IDE-workshop-presentation">Dicas de utilização do IDE</a></li>
+    <li><a href="./01-Maven.html">Maven no IDE</a></li>
+    <!-- <li><a href="http://www.slideshare.net/MiguelLPardal/IDE-workshop-presentation">Dicas de utilização do IDE</a></li> -->
 </ul>
 <ul>
     <li>
-    Voltar ao exemplo de <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/java-app_config.zip">aplicação Java</a>:
+    Voltar ao exemplo de <a href="./Software/java-app_config.zip">aplicação Java</a>:
     </li>
     <ul>
         <li>
@@ -189,8 +189,8 @@ O IDE pode ser configurado por cima do JDK (IDE/JDK), ou então por cima também
     No seguinte exercício iremos explorar alguns dos mecanismos que o Maven disponibiliza.
 </p>
 <ol>
-    <li>Obter o exemplo  <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/mainApp.zip">MainApp
-    <img src="./Ferramentas_files/zip.png" alt="ZIP"></a>
+    <li>Obter o exemplo  <a href="./Software/mainApp.zip">MainApp
+    <img src="./images/zip.png" alt="ZIP"></a>
     </li>
     <ol type="a">
         <li>Configurar o projecto no IDE  (o <tt>readme.txt</tt> contém instruções mais detalhadas)</li>
@@ -210,7 +210,7 @@ O IDE pode ser configurado por cima do JDK (IDE/JDK), ou então por cima também
                 <br>
                 <p>
                 &lt;dependency&gt;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;pt.tecnico.sd&lt;/groupId&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;pt.ulusofona.cd&lt;/groupId&gt;<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;ConfigHelper&lt;/artifactId&gt;<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;<br>
                 &lt;/dependency<br>
@@ -223,8 +223,8 @@ O IDE pode ser configurado por cima do JDK (IDE/JDK), ou então por cima também
 <br>
     <li>Há um novo erro, consegue perceber qual é? </li>
     <ol type="a">
-        <li>Obter o exemplo  <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/01-tools/ConfigHelper.zip">ConfigHelper
-        <img src="./Ferramentas_files/zip.png" alt="ZIP"></a>
+        <li>Obter o exemplo  <a href="Software/ConfigHelper.zip">ConfigHelper
+        <img src="./images/zip.png" alt="ZIP"></a>
         </li>
         <li>Configurar o projecto no IDE  (<tt>readme.txt</tt> com instruções mais detalhadas)</li>
         <li>Estudar o código fonte (pasta <tt>src</tt>) e o ficheiro <tt>pom.xml</tt></li>
@@ -253,7 +253,4 @@ O IDE pode ser configurado por cima do JDK (IDE/JDK), ou então por cima também
 © Docentes de Computação Distribuída, Dep. Eng. Informática, <a href="https://www.ulusofona.pt/">Universidade Lusófona</a><br>
 </p>
 </div>
-
-
-
 </div></body></html>

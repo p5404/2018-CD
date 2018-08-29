@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>World Wide Web</title>
+</head>
+
+<body>
+
+<div class="contexto">
+    <p>
+        <a href="./index.html">Labs CD</a> &gt;
+        <a href="./02-Sockets.html"><i>Sockets</i></a>
+    </p>
+</div>
+
+<div class="titulo">
+    <h1>World Wide Web</h1>
+</div>
+<hr>
+
+<div class="corpo">
+
+<h2 id="www">World Wide Web</h2>
+
+<h3 id="definicao">Definição</h3>
+
+<p>
+A World Wide Web (WWW) é, actualmente, a principal aplicação da Internet.
+A arquitectura é constituída por:
+</p>
+<ul>
+    <li>servidores (<b>web servers</b>) - disponibilizam documentos;</li>
+    <li>clientes (<b>web browsers</b>) -  acedem aos documentos.</li>
+</ul>
+
+<p>
+<img src="./images/arquitectura-web.png" alt="Arquitectura da Web">
+</p>
+
+<p>&nbsp;</p>
+
+<h3 id="referencias">Referências</h3>
+<p>
+Na Web tudo é um documento.
+Este modelo é poderoso pela sua simplicidade, pois um documento pode conter diferentes tipos de informação:
+texto, imagem, som, etc. Todos são referenciados da mesma forma.
+</p>
+<p>
+A "teia" que deu nome à Web é formada pelas referências (<b>hyperlinks</b>) designadas por Uniform Resource Identifiers (URIs) que ligam
+os documentos uns aos outros.
+</p>
+<p>
+Os URIs podem ter um de dois tipos: URL e URN.
+</p>
+<p>
+Os Uniform Resource Locators (URLs) são referências que incluem informação sobre como e onde aceder ao documento.
+Por exemplo, o URL seguinte é o endereço da página inicial da Universidade Lusófona.
+</p>
+<p>
+</p><pre><span>http</span><span>:</span><span>//ulusofona.pt/</span></pre>
+<p></p>
+<p>
+Os Uniform Resource Name (URNs) são referências globalmente únicas, independentes da localização e persistentes.
+Por exemplo, o URN seguinte usa o International Standard Book Number (ISBN) de um livro.
+</p>
+<p>
+</p><pre><span>urn</span><span>:</span><span>isbn</span><span>:</span><span>0</span><span>-</span><span>13</span><span>-</span><span>349945</span><span>-</span><span>6</span></pre>
+<p></p>
+
+<p>&nbsp;</p>
+
+<h3 id="comunicacao">Protocolo de comunicação</h3>
+<p>
+O protocolo de comunicação entre clientes e servidores utilizado na Web é o HyperText Transfer Protocol (HTTP).
+O HTTP permite transferir documentos na Web entre cliente e servidor, e usa TCP/IP para garantir um canal de comunicação fiável.
+</p>
+<p>
+<img src="./images/protocolos-rede.png" alt="Protocolos de rede">
+</p>
+<p>
+O HTTP é um protocolo de pedido-resposta.
+Os pedidos e as respostas têm duas secções: cabeçalho e corpo.
+O separador de ambos é uma linha em branco.<br>
+Os cabeçalhos são linhas de texto com informação sobre o pedido.<br>
+O corpo é binário e pode transportar qualquer conteúdo.
+</p>
+<p>
+Alguns pedidos HTTP:
+</p>
+<ul>
+    <li><b>GET</b> - pedido de documento</li>
+    <li><b>HEAD</b> - pedido apenas de cabeçalho de documento</li>
+    <li><b>POST</b> - fornecimento de informação para ser acrescentada ao documento</li>
+ </ul>
+<p>
+Alguns códigos de resposta HTTP:
+</p>
+<ul>
+    <li><b>HTTP 200</b> - OK</li>
+    <li><b>HTTP 404</b> - Erro, documento não encontrado</li>
+    <li><b>HTTP 500</b> - Erro, interno ao servidor</li>
+ </ul>
+<p>
+O exemplo seguinte mostra o que passa
+na rede quando é feito um pedido HTTP.
+</p>
+<p>
+Pedido:
+</p>
+<p>
+</p><pre><span>GET </span><span>/</span><span> HTTP</span><span>/</span><span>1.1</span><span>
+</span><span>Accept</span><span>:</span><span> image</span><span>/</span><span>gif</span><span>,</span><span> image</span><span>/</span><span>x</span><span>-</span><span>xbitmap</span><span>,</span><span> image</span><span>/</span><span>jpeg</span><span>,</span><span> image</span><span>/</span><span>pjpeg</span><span>,</span><span> application</span><span>/</span><span>x</span><span>-</span><span>shockwave</span><span>-</span><span>flash</span><span>,</span><span> application</span><span>/</span><span>vnd</span><span>.</span><span>ms</span><span>-</span><span>excel</span><span>,</span><span> application</span><span>/</span><span>vnd</span><span>.</span><span>ms</span><span>-</span><span>powerpoint</span><span>,</span><span> application</span><span>/</span><span>msword</span><span>,</span><span> </span><span>*</span><span class="com">/*
+Accept-Language: en-us
+UA-CPU: x86
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; InfoPath.1; IEMB3; IEMB3)
+Host: www.ist.utl.pt
+Proxy-Connection: Keep-Alive
+Cookie: __utmc=12105388
+</span></pre>
+<p></p>
+<p>
+Resposta (encurtada):
+</p>
+<p>
+</p><pre><span>HTTP</span><span>/</span><span>1.1</span><span> </span><span>200</span><span> OK
+</span><span>Date</span><span>:</span><span> </span><span>Wed</span><span>,</span><span> </span><span>07</span><span> </span><span>Mar</span><span> </span><span>2007</span><span> </span><span>18</span><span>:</span><span>28</span><span>:</span><span>00</span><span> GMT
+</span><span>Server</span><span>:</span><span> </span><span>Apache</span><span>/</span><span>2.0</span><span>.</span><span>53</span><span> </span><span>(</span><span>Debian</span><span> GNU</span><span>/</span><span>Linux</span><span>)</span><span> PHP</span><span>/</span><span>4.3</span><span>.</span><span>10</span><span>-</span><span>18</span><span>
+X</span><span>-</span><span>Powered</span><span>-</span><span>By</span><span>:</span><span> PHP</span><span>/</span><span>4.3</span><span>.</span><span>10</span><span>-</span><span>18</span><span>
+</span><span>Transfer</span><span>-</span><span>Encoding</span><span>:</span><span> chunked
+</span><span>Content</span><span>-</span><span>Type</span><span>:</span><span> text</span><span>/</span><span>html
+
+</span><span>2092</span><span>
+</span><span>&lt;!</span><span>DOCTYPE html PUBLIC </span><span>"-//W3C//DTD XHTML 1.0 Transitional//EN"</span><span> </span><span>"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span><span>&gt;</span><span>
+</span><span>&lt;</span><span>html lang</span><span>=</span><span>"por-PT"</span><span> xml</span><span>:</span><span>lang</span><span>=</span><span>"por-PT"</span><span> xmlns</span><span>=</span><span>"http://www.w3.org/1999/xhtml"</span><span>&gt;</span><span>
+</span><span>&lt;head&gt;</span><span>
+</span><span>&lt;title&gt;</span><span>Instituto</span><span> </span><span>Superior</span><span> T</span><span>é</span><span>cnico</span><span>&lt;/</span><span>title</span><span>&gt;</span><span>
+</span><span>&lt;</span><span>meta http</span><span>-</span><span>equiv</span><span>=</span><span>"Content-Type"</span><span> content</span><span>=</span><span>"text/html; charset=iso-8859-1"</span><span> </span><span>/&gt;</span><span>
+</span><span>&lt;</span><span>meta name</span><span>=</span><span>"keywords"</span><span> content</span><span>=</span><span>"ensino,  ensino superior, universidade, instituto, cijncia, instituto superior ticnico, investigagco e desenvolvimento"</span><span> </span><span>/&gt;</span><span>
+</span><span>&lt;</span><span>meta name</span><span>=</span><span>"description"</span><span> content</span><span>=</span><span>"O Instituto Superior Ticnico i a maior escola de engenharia, cijncia e tecnologia em Portugal."</span><span> </span><span>/&gt;</span><span>
+</span><span>&lt;</span><span>meta name</span><span>=</span><span>"author"</span><span> content</span><span>=</span><span>"Instituto Superior Ticnico"</span><span> </span><span>/&gt;</span><span>
+</span><span>&lt;</span><span>meta http</span><span>-</span><span>equiv</span><span>=</span><span>"pragma"</span><span> content</span><span>=</span><span>"no-cache"</span><span> </span><span>/&gt;</span><span>
+</span><span>&lt;</span><span>link rel</span><span>=</span><span>"shortcut icon"</span><span> href</span><span>=</span><span>"http://www.ist.utl.pt/img/wwwist.ico"</span><span> type</span><span>=</span><span>"image/x-icon"</span><span> </span><span>/&gt;</span><span>
+</span><span>&lt;</span><span>link rel</span><span>=</span><span>"stylesheet"</span><span> type</span><span>=</span><span>"text/css"</span><span> media</span><span>=</span><span>"screen"</span><span> href</span><span>=</span><span>"css/iststyle.css"</span><span> </span><span>/&gt;</span><span>
+</span><span>&lt;</span><span>link rel</span><span>=</span><span>"stylesheet"</span><span> type</span><span>=</span><span>"text/css"</span><span> media</span><span>=</span><span>"print"</span><span> href</span><span>=</span><span>"css/print.css"</span><span> </span><span>/&gt;</span><span>
+</span><span>...</span><span>
+</span><span>...</span><span>
+</span><span>...</span></pre>
+
+
+</div>
+
+<hr>
+
+<div class="rodape">
+    <p>
+    © Docentes de Computação Distribuída, Dep. Eng. Informática, <a href="https://www.ulusofona.pt/">Universidade Lusófona</a><br>
+    </p>
+</div>
+
+
+</body></html>

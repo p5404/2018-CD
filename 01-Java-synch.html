@@ -4,7 +4,6 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-    <link rel="stylesheet" type="text/css" href="./css/labs-sd.css">
 
     <title>Java synchronization</title>
 </head>
@@ -48,8 +47,7 @@ Caso a sincronização não seja implementada,
 pode ocorrer interferência entre tarefas, levando a situações de inconsistência nos dados partilhados.
 </p>
 <p>
-Por outro lado,
-a presença de mecanismos de sincronização pode originar contenção
+Por outro lado, a presença de mecanismos de sincronização pode originar contenção
 quando duas ou mais tarefas tentam aceder ao mesmo recurso em simultâneo.<br />
 Se apenas existir leitura de dados partilhados por parte das tarefas concorrentes,
 estes problemas não se colocam.
@@ -150,9 +148,7 @@ Para construir uma coleção sincronizada usa-se um método especial da classe <
 que cria a nova coleção "embrulhando" uma coleção do mesmo tipo:
 </p>
 <pre class="prettyprint lang-java">
-
     List synchronizedList = Collections.synchronizedList(regularList);
-
 </pre>
 
 <p>
