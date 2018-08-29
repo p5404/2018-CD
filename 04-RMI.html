@@ -59,10 +59,10 @@
 <p>
 Partindo de um Jogo do Galo (Tic Tac Toe) feito para um cenário local,
 pretende-se desenvolver uma variante do jogo onde a parte
-computacionalmente mais pesada é realizada por um servidor remoto.
+computacionalmente mais pesada é realizada por um servidor remoto.<br />
 O servidor guarda as variáveis do jogo.
 O cliente faz a interface com o utilizador.<br>
-<img src="./04-RMI_files/ttt.png" alt="Tic Tac Toe" height="75"><br>
+<img src="./images/ttt.png" alt="Tic Tac Toe" height="75"><br>
 </p>
 
 <p><em>
@@ -73,8 +73,7 @@ Use uma máquina pessoal ou do laboratório e não o sigma.
 
 <ol>
     <li>
-    Descarregue e descomprima o código fonte da aplicação
-    Jogo do Galo/Tic Tac Toe <br>
+    Descarregue e descomprima o código fonte da aplicação Jogo do Galo/Tic Tac Toe <br>
     (<a href="./Software/ttt-rmi-server.zip">servidor<img src="./images/zip.png" alt="ZIP"></a>,
      <a href="./Software/ttt-rmi-client.zip">cliente<img src="./images/zip.png" alt="ZIP"></a>).
     </li>
@@ -96,13 +95,9 @@ Use uma máquina pessoal ou do laboratório e não o sigma.
 
     <p>&nbsp;</p>
     <li>
-    Pretende-se que a classe <tt>TTT.java</tt>, que implementa o jogo,
-    passe a ser invocável remotamente. <br>
-    Dessa forma,
-    permitir-se-á que haja um cliente remoto
-    (que possivelmente corre em máquina diferente que a máquina que serve o jogo)
-    que interage com os jogadores e que invoca as funções do servidor via
-    Java RMI (<i>Remote Method Invocation</i>).
+    Pretende-se que a classe <tt>TTT.java</tt>, que implementa o jogo, passe a ser invocável remotamente. <br>
+    Dessa forma, permitir-se-á que haja um cliente remoto (que possivelmente corre em máquina diferente que a máquina que serve o jogo)<br />
+    que interage com os jogadores e que invoca as funções do servidor via Java RMI (<i>Remote Method Invocation</i>).
     </li>
     <ol type="a">
         <li>
@@ -127,11 +122,14 @@ Use uma máquina pessoal ou do laboratório e não o sigma.
             <li>
             Adicione a dependência no <tt>pom.xml</tt> do servidor e do cliente,
             pois esta interface terá que ser partilhada por ambos.
-        <pre><span> ... </span><span class="tag">&lt;dependency&gt;</span><span>
-            </span><span class="tag">&lt;groupId&gt;</span><span>example</span><span class="tag">&lt;/groupId&gt;</span><span>
-            </span><span class="tag">&lt;artifactId&gt;</span><span>ttt-rmi-interface</span><span class="tag">&lt;/artifactId&gt;</span><span>
-            </span><span class="tag">&lt;version&gt;</span><span>1.0-SNAPSHOT</span><span class="tag">&lt;/version&gt;</span><span>
-        </span><span class="tag">&lt;/dependency&gt;</span><span> ... </span></pre>
+<pre>
+<span> ... </span>
+<span>&lt;dependency&gt;</span>
+    <span>&lt;groupId&gt;</span><span>example</span><span>&lt;/groupId&gt;</span><span>
+    </span><span>&lt;artifactId&gt;</span><span>ttt-rmi-interface</span><span>&lt;/artifactId&gt;</span><span>
+    </span><span>&lt;version&gt;</span><span>1.0-SNAPSHOT</span><span>&lt;/version&gt;</span><span>
+</span><span>&lt;/dependency&gt;</span><span> ... </span>
+</pre>
             </li>
             <li>
             Depois de editar os <tt>pom.xml</tt>, refresque as dependências do Maven no projeto Eclipse<br>
@@ -160,7 +158,7 @@ Use uma máquina pessoal ou do laboratório e não o sigma.
             registar o objecto remoto nesse <tt>rmiregistry</tt>
             </li>
         </ol>
-        Consulte o <a href="http://disciplinas.tecnico.ulisboa.pt/leic-sod/2017-2018/labs/04-rmi/ShapeListServer.java">exemplo da classe
+        Consulte o <a href="./Software/ShapeListServer.java">exemplo da classe
         ShapeListServer apresentado no livro</a> para ajuda.<br>
         Não se esqueça de actualizar a <tt>mainclass</tt> do ficheiro <tt>pom.xml</tt>
         de modo a reflectir a classe que possui o método <tt>main</tt>.

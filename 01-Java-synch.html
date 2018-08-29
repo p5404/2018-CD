@@ -35,8 +35,7 @@
 <b>Concorrência</b>
 </p>
 Com a concorrência procura-se o aumento do desempenho de uma aplicação através da divisão de trabalho
-por várias tarefas que se executam em simultâneo,
-tirando partido de eventuais múltiplos processadores.
+por várias tarefas (<tt>threads</tt> ou processos) que se executam em simultâneo, tirando partido de eventuais múltiplos processadores.
 </p>
 <p>
 <b>Sincronização</b>
@@ -69,7 +68,7 @@ A primitiva <tt>synchronized</tt> é aplicada a métodos do objeto e
 <p>
 O seguinte exemplo mostra uma utilização da sincronização em Java:
 </p>
-<pre class="prettyprint lang-java">
+<pre>
 public class MySynchronizedCounter {
     private int c = 0;
 
@@ -88,19 +87,17 @@ public class MySynchronizedCounter {
 </pre>
 <p>
 Os métodos <tt>increment()</tt>,
-<tt>decrement()</tt> e
-<tt>value()</tt> da classe <tt>MySynchronizedCounter</tt> estão sincronizados.
+<tt>decrement()</tt> e <tt>value()</tt> da classe <tt>MySynchronizedCounter</tt> estão sincronizados.
 Isto significa que, caso um dos 3 métodos seja invocado, o trinco do objeto é adquirido,
-e se houver outra tarefa a tentar aceder a qualquer um deles,
-ficará bloqueada à espera que o recurso/método seja libertado pela primeira invocação.
+e se houver outra tarefa a tentar aceder a qualquer um deles, ficará bloqueada à espera que o recurso/método seja libertado pela primeira invocação.
 </p>
+<p>Os construtores não podem ser sincronizados - é um erro de sintaxe.</p>
 <p>
 Também é possível usar o <tt>synchronized</tt> para adquirir o trinco apenas numa parte do código.
 </p>
-<pre class="prettyprint lang-java">
+<pre>
     // acquire lock of object referenced by 'this'
     synchronized (this) {
-
         // access shared variables protected by lock
 
     }
@@ -110,9 +107,6 @@ Também é possível usar o <tt>synchronized</tt> para adquirir o trinco apenas 
 <p>
 No contexto de uma região <tt>synchronized</tt>, é também possível utilizar variáveis de condição, usando as primitivas <tt>wait</tt>, <tt>notify</tt> e <tt>notifyAll</tt>.
 </p>
-
-
-<p>&nbsp;</p>
 <h3>Concorrência com coleções</h3>
 <p>
 As coleções são objetos que armazenam vários outros objetos.
@@ -135,36 +129,30 @@ Cada coleção implementa uma interface que dita o tipo de acesso esperado:
     </li>
 </ul>
 <p>
-Por omissão,
-as coleções as coleções não são sincronizadas, pois assim conseguem melhor desempenho sequencial.
+Por omissão, as <a href="https://docs.oracle.com/javase/tutorial/collections/implementations/index.html">coleções</a> não são sincronizadas, pois assim conseguem melhor desempenho sequencial.
 <!--Como a grande maioria das classes corre em aplicações com uma tarefa,
 as novas coleções de classes (List, Set, Map, etc.) não suportam esse mecanismo.</p>-->
 </p>
-
 <p>
-Para situações em que é necessário sincronizar os acessos às coleções,
-existem versões sincronizadas que apenas permitem um acesso de cada vez.<br />
+Para situações em que é necessário sincronizar os acessos às coleções, existem versões sincronizadas que apenas permitem um acesso de cada vez.<br />
 Para construir uma coleção sincronizada usa-se um método especial da classe <tt>Collections</tt>,
 que cria a nova coleção "embrulhando" uma coleção do mesmo tipo:
 </p>
-<pre class="prettyprint lang-java">
+<pre>
     List synchronizedList = Collections.synchronizedList(regularList);
 </pre>
 
 <p>
 Posteriormente, foram acrescentadas ao Java coleções concorrentes
-(<i>Concurrent Collections</i> no pacote <tt>java.util.concurrent</tt>)
+(<i>Concurrent Collections</i> no pacote <tt>java.util.concurrent</tt>)<br/>
 que utilizam estruturas de dados sofisticadas, desenhadas de raíz para garantir a consistência
-da coleção mesmo quando esta é acedida concorrentemente por muitas tarefas.
+da coleção mesmo quando esta é acedida concorrentemente por muitas tarefas.<br/>
 Exemplos destas coleções concorrentes são:
 <tt>ConcurrentHashMap</tt>, <tt>CopyOnWriteArrayList</tt>, e <tt>CopyOnWriteHashSet</tt>.<br />
 No exemplo seguinte constroí-se um mapa optimizado para acessos concorrentes:
 </p>
-<pre class="prettyprint lang-java">
-
+<pre>
     Map&lt;String,Object&gt; map = new ConcurrentHashMap&lt;&gt;();
-
-
 </pre>
 
 <!--

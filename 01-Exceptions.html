@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
@@ -9,7 +8,7 @@
 
 </head>
 
-<body onload="prettyPrint()">
+<body>
 
 <div class="contexto">
     <p>
@@ -24,21 +23,19 @@
 
 <p>
 As exceções são usadas na linguagem Java para assinalar que algo não correu como esperado.<br />
-São classes que herdam de <tt>java.lang.Exception</tt> e
-cujos objetos podem ser atirados (throw) e
-apanhados (caught).
+São classes que herdam de <tt>java.lang.Exception</tt> e cujos objetos podem ser atirados (throw) e apanhados (caught).
 </p>
 <p>
 As exceções que herdam de <tt>java.lang.RuntimeException</tt> (RTE) são chamadas <i>unchecked exceptions</i>.
-Neste caso, o compilador não obriga o programador a declarar se apanha ou se atira.
+Neste caso, o compilador não obriga o programador a declarar se apanha ou se atira.<br />
 Por este motivo, qualquer linha de código pode atirar uma exceção destas.
 A mais conhecida é a <tt>NullPointerException</tt> (NPE).
 </p>
 <p>
 As exceções que herdam de <tt>java.lang.Exception</tt> são chamadas <i>checked exceptions</i>,
-no sentido, em que a sua utilização é verificada pelo compilador.
-Nestes casos é preciso explicitar se se apanha a exceção (catch) ou se se lança (throws).
-Normalmente, se não se vai tentar recuperar a exceção, pode simplesmente dizer que se atira.
+no sentido, em que a sua utilização é verificada pelo compilador.<br/>
+Nestes casos é preciso explicitar se se apanha a exceção (<tt>catch</tt>) ou se se lança (<tt>throws</tt>).
+Normalmente, se não se vai tentar recuperar a exceção, pode simplesmente dizer que se atira.<br />
 É preferível atirar do que fazer um falso tratamento de exceção.
 </p>
 
@@ -90,7 +87,7 @@ Na situação abaixo,
 o servidor tenta criar o socket com um porto fora do intervalo [0;65535].
 </p>
 
-<pre class="prettyprint lang-java">
+<pre>
 java.lang.reflect.InvocationTargetException
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -111,7 +108,7 @@ o cliente tenta ligar ao servidor por meio dum porto incorreto e
 não consegue.
 </p>
 
-<pre class="prettyprint lang-java">
+<pre>
 java.lang.reflect.InvocationTargetException
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -141,7 +138,7 @@ Caused by: java.net.ConnectException: Connection refused: connect
 
 O seguinte código mostra <b>maus</b> exemplos de tratamento de exceções.
 </p>
-<pre class="prettyprint lang-java">
+<pre>
     // ANTI-padrão 'apanhar-ignorar!'
     // Ignorar a exceção sem dizer nada a ninguém.
     // Evitar!
@@ -171,7 +168,7 @@ Ignorar a exceção torna muito mais difícil detetar e corrigir erros no códig
 <p>
 Vamos então ilustrar alguns <b>bons</b> exemplos:
 </p>
-<pre class="prettyprint lang-java">
+<pre>
 
     // padrão 'deixar-passar'
     // Se a exceção não vai ser tratada, mais vale lançá-la (throws)
@@ -208,16 +205,34 @@ Vamos então ilustrar alguns <b>bons</b> exemplos:
 
 </pre>
 
+<pre>
+    // padrão 'apanhar-recuperar'
+    // O bloco finally é executado após a execução bem-sucedida do bloco try
+    // ou após um dos blocos catch ter manipulado uma exceção.
+    FileInputStream inputStream = null;
+    try {
+        File file = new File("./tmp.txt");
+        inputStream = new FileInputStream(file);
+
+        // use the inputStream to read a file
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } finally {
+        if (inputStream != null) {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+</pre>
+
 <p>
 Em resumo, um bom tratamento de exceções é muito importante em Sistemas Distribuídos.<br />
 As melhores estratégias a seguir são:
 'deixar-passar', 'apanhar-*-atirar' e 'apanhar-recuperar' quando possível.
 </p>
-
-
-
-<p>&nbsp;</p>
-
 
 <div class="rodape">
 <p>

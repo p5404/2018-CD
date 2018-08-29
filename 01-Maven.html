@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
@@ -8,7 +7,7 @@
     <title>Maven</title>
 </head>
 
-<body onload="prettyPrint()">
+<body>
 
 <div class="contexto">
     <p>
@@ -36,7 +35,7 @@
 <h3 id="intro">Introdução</h3>
 
 <p>
-O Maven é uma ferramenta Java para a gestão de projetos que fornece aos programadores uma estrutura completa para suportar o ciclo de desenvolvimento de uma aplicação.
+O Maven é uma ferramenta Java para a gestão de projetos que fornece aos programadores uma estrutura completa para suportar o ciclo de desenvolvimento de uma aplicação.<br />
 Em particular, o Maven trata da compilação, distribuição, documentação, e
 colaboração em equipa, entre outras tarefas.
 </p>
@@ -49,7 +48,7 @@ que é a unidade fundamental deste sistema.
 Estrutura de um ficheiro POM (<a href="http://maven.apache.org/pom.html">documentação</a>):
 </p>
 
-<pre class="prettyprint lang-xml">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+<pre>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
   xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0
                       http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
@@ -111,7 +110,7 @@ Estrutura de um ficheiro POM (<a href="http://maven.apache.org/pom.html">documen
 Exemplo de ficheiro POM:
 </p>
 
-<pre class="prettyprint lang-xml">
+<pre>
 &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
   xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;
   &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
@@ -181,10 +180,7 @@ a estrutura de pastas associada a um projecto Maven é a seguinte:
 
 <p><b>Ciclos de vida de construção, fases e objetivos (<a href="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Build_Lifecycle_Basics">documentação</a>)</b></p>
 <p>
-Em Maven,
-o processo de construção é dividido em ciclos de vida de construção,
-fases e
-objetivos.
+Em Maven, o processo de construção é dividido em ciclos de vida de construção, fases e objetivos.
 Um ciclo de vida de construção é composto por uma sequência de fases de construção e
 por sua vez cada fase de construção consiste numa sequência de objetivos.
 <p>
@@ -192,59 +188,48 @@ Por exemplo,
 o ciclo <i>default</i> inclui as seguintes fases (<a href="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference" name="lista completa de fases" target="_self">lista completa de fases</a>):
 </p>
 <ul>
-    <li>validate - verifica se projecto está correcto e
-        toda a informação está disponível</li>
-    <li>compile - compila o código fonte</li>
-    <li>test - testa o código fonte compilado</li>
-    <li>package - pega no código compilado e
+    <li><tt>validate</tt> - verifica se projecto está correcto e toda a informação está disponível</li>
+    <li><tt>compile</tt> - compila o código fonte</li>
+    <li><tt>test</tt>> - testa o código fonte compilado</li>
+    <li><tt>package</tt> - pega no código compilado e
         empacota-o num formato que se pode partilhar/distribuir, como JAR.</li>
-    <li>integration-test - processa e
+    <li><tt>integration-test</tt> - processa e
         integra o pacote se necessário num ambiente onde testes de integração possam correr</li>
-    <li>verify - corre verificações para confirmar que o pacote é válido e
+    <li><tt>verify</tt> - corre verificações para confirmar que o pacote é válido e
         corresponde aos critérios de qualidade definidos</li>
-    <li>install - instala o pacote no repositório local,
+    <li><tt>install</tt> - instala o pacote no repositório local,
         para poder ser usado localmente como dependência noutros projectos</li>
-    <li>deploy - copia pacote final para um repositório remoto</li>
+    <li><tt>deploy</tt> - copia pacote final para um repositório remoto</li>
 </ul>
 
 <p>
 Uma execução no Maven consiste em passar um comando a este.
-Este comando corresponde ao nome dum ciclo de vida de construção,
-fase ou
-objetivo.
+Este comando corresponde ao nome dum ciclo de vida de construção, fase ou objetivo.
 </p>
 
 <p>
-Se um ciclo de vida solicitado é executado,
-todas as fases de construção deste ciclo de vida são executadas.
-Por conseguinte,
-se uma fase de construção solicitada é executada,
-todas as fases de construção que a antecedem na sequência pré-definida de fases de construção são também executadas.
+Se um ciclo de vida solicitado é executado, todas as fases de construção deste ciclo de vida são executadas.
+Por conseguinte, se uma fase de construção solicitada é executada, todas as fases de construção que a antecedem<br />
+na sequência pré-definida de fases de construção são também executadas.
 </p>
 
 <p>
 Por exemplo, executar: <br />
 <tt>mvn package</tt><br />
-irá correr todas as fases anteriores
-- validate, compile, ... -
-antes de executar package.
+irá correr todas as fases anteriores - <tt>validate</tt>, <tt>compile</tt>, ... - antes de executar package.
 </p>
 
 
 <p><b>Dependências e repositórios</b></p>
 <p>
 Um dos primeiros objetivos executados pelo Maven é a verificação das dependências do projeto.
-As dependências são arquivos externos JAR (bibliotecas Java) necessárias para o projeto.
-Se as dependências não forem encontrados no repositório local,
-isto é,
-numa pasta no disco rígido do computador local,
+As dependências são arquivos externos JAR (bibliotecas Java) necessárias para o projeto.<br/>
+Se as dependências não forem encontrados no repositório local, isto é, numa pasta no disco rígido do computador local,<br/>
 o Maven descarrega-as de um repositório central para o repositório local.
-Por omissão,
-o repositório local encontra-se na pasta %USER_HOME%.
-Contudo,
-é possível especificar um repositório local onde Maven irá guardar os artefactos.
+Por omissão, o repositório local encontra-se na pasta <tt>%USER_HOME%</tt>.<br />
+Contudo, é possível especificar um repositório local onde Maven irá guardar os artefactos.
 
-<pre class="prettyprint lang-xml">
+<pre>
 &lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;
           xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
           xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;&gt;
@@ -257,7 +242,7 @@ Um exemplo de uma dependência é o JUnit,
 como pode ser visto abaixo.
 </p>
 
-<pre class="prettyprint lang-xml">
+<pre>
 &lt;project&gt;
   ...
   &lt;dependencies&gt;
@@ -272,29 +257,25 @@ como pode ser visto abaixo.
 
 <p>
 Os três primeiros campos identificam a dependência.
-O parâmetro <tt>scope</tt> especifica que a dependência apenas existe para os testes.
-Isto significa que o Maven vai providenciar um <i>classpath</i> sem o JUnit para compilação do código principal e
-um <i>classpath</i> com o JUnit (na versão indicada) para compilação e
-execução do código de testes.
+O parâmetro <tt>scope</tt> especifica que a dependência apenas existe para os testes.<br />
+Isto significa que o Maven vai providenciar um <i>classpath</i> sem o JUnit para compilação do código principal <br />
+e um <i>classpath</i> com o JUnit (na versão indicada) para compilação e execução do código de testes.
 </p>
 <p>
-As dependências podem ser pesquisadas no motor de pesquisa amigável do repositório central Maven.
+As dependências podem ser pesquisadas no motor de pesquisa amigável do repositório central Maven.<br />
 Por exemplo, o JUnit 4.12 tem a seguinte página informativa:
 <a href="http://mvnrepository.com/artifact/junit/junit/4.12">http://mvnrepository.com/artifact/junit/junit/4.12</a>
 </p>
 
 <p>
-Para o caso de projetos em desenvolvimento com inúmeros módulos
-(por exemplo: módulos <b>A</b>, <b>B</b> e <b>C</b>),
-com dependências entre eles,
-o conceito de SNAPSHOT é muitas vezes usado.
-Se um módulo <b>A</b> está em desenvolvimento rápido, e
-a criar novas versões com muita frequência,
+Para o caso de projetos em desenvolvimento com inúmeros módulos (por exemplo: módulos <b>A</b>, <b>B</b> e <b>C</b>),<br />
+com dependências entre eles, o conceito de SNAPSHOT é muitas vezes usado.<br />
+Se um módulo <b>A</b> está em desenvolvimento rápido, e a criar novas versões com muita frequência,<br />
 o sufixo -SNAPSHOT é adicionado no elemento <tt>&lt;version&gt;</tt>.
 Exemplo do <tt>pom.xml</tt> de <b>A</b>:
 </p>
 
-<pre class="prettyprint lang-xml">
+<pre>
 &lt;project&gt
   ...
   &lt;groupId&gt;exemplo&lt;/groupId&gt;
@@ -304,16 +285,13 @@ Exemplo do <tt>pom.xml</tt> de <b>A</b>:
 &lt;/project&gt;</pre>
 
 <p>
-Assim,
-cada vez que o módulo <b>A</b> enviar uma SNAPSHOT do seu código actualizado para o repositório,
-vai substituir a versão que existia anteriormente.
-Por sua vez,
-os outros módulos, <b>B</b> e <b>C</b>,
-que dependem de <b>A</b> escolhem essa mesma versão SNAPSHOT como dependência.
+Assim, cada vez que o módulo <b>A</b> enviar uma SNAPSHOT do seu código actualizado para o repositório,
+vai substituir a versão que existia anteriormente.<br />
+Por sua vez, os outros módulos, <b>B</b> e <b>C</b>, que dependem de <b>A</b> escolhem essa mesma versão SNAPSHOT como dependência.
 O <tt>pom.xml</tt> de <b>B</b> e <b>C</b> iriam conter:
 </p>
 
-<pre class="prettyprint lang-xml">
+<pre>
 &lt;project&gt;
   ...
     &lt;dependency&gt;
@@ -348,7 +326,7 @@ outros podem também ser implementados em Java.
 Damos como exemplo o <i>plugin</i> <tt>AppAssembler</tt>:
 </p>
 
-<pre class="prettyprint lang-xml">
+<pre>
 &lt;build&gt;
     &lt;plugins&gt;
       &lt;plugin&gt;
@@ -381,11 +359,9 @@ o programa a executar é um programa de exemplo (java-app) cuja classe principal
 <p>
 Os perfis de construção são utilizados caso seja necessário construir um projeto de maneira diferente.
 Por exemplo,
-pode ser necessário construir num computador pessoal projetos para desenvolvimento e teste.
-Pode ainda ser necesssário construí-los para um ambiente de produção.
-Estas versões poderão ser diferentes.
-Para permitir diferentes versões,
-diferentes perfis de construção podem ser adicionados aos ficheiros POM.
+pode ser necessário construir num computador pessoal projetos para desenvolvimento e teste.<br />
+Pode ainda ser necesssário construí-los para um ambiente de produção. Estas versões poderão ser diferentes.<br/>
+Para permitir diferentes versões, diferentes perfis de construção podem ser adicionados aos ficheiros POM.
 Durante a execução pode ser especificado que perfil de construção deve ser usado.
 </p>
 
