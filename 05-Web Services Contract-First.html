@@ -25,7 +25,7 @@
     <h3>Projeto:</h3>
     <ul>
         <li>Construir <tt>station-ws</tt> a partir do contrato WSDL</li>
-        <li>Concretizar as operações <tt>getInfo</tt>, <tt>getBina</tt> e <tt>returnBina</tt></li>
+        <li>Concretizar as operações <tt>getInfo</tt>, <tt>getBicla</tt> e <tt>returnBicla</tt></li>
         <li>Testar as operações a partir do <tt>station-ws-cli</tt></li>
     </ul>
 </div>
@@ -40,7 +40,7 @@
 <p>
 Um serviço é uma funcionalidade de um sistema de informação que pode ser invocada remotamente através da rede.<br>
 Um <i>Web Service</i> é um serviço que usa os protocolos de comunicação da <i>World Wide Web</i>
-- HTTP sobre TCP sobre IP -
+- HTTP sobre TCP/IP -
 e protocolos adicionais para descrever mensagens e dados
 - SOAP sobre XML.<br>
 Para permitir uma definição rigorosa das operações e dos tipos de dados dos <i>Web Services</i>
@@ -99,9 +99,7 @@ As bibliotecas JAX (<i>Java API for XML</i>) são a família de bibliotecas da p
 como é o caso dos <i>Web Services</i>.<br>
 A JAX-WS (Java API for XML Web Services) é uma biblioteca para Java que permite implementar <i>Web Services</i>,
 usando as normas:<br>
-HTTP/TCP/IP para mensagens,
-SOAP/XML para mensagens,
-WSDL e XSD para descrição.
+HTTP/TCP/IP para mensagens, SOAP/XML para mensagens, WSDL e XSD para descrição.
 </p>
 <p>
 É possível implementar Web Services partindo de um contrato WSDL (e XSD) já existente.<br>
@@ -276,7 +274,7 @@ Vamos começar pelo <b>servidor</b> <tt>station-ws</tt>:<br>
         Adicione a anotação <tt>@Override</tt> antes de cada método de operação,
         para que o compilador confirme que está a implementar corretamente
         o método definido na interface.<br>
-        Note que as operações <tt>getInfo</tt>, <tt>getBina</tt> e <tt>returnBina</tt>
+        Note que as operações <tt>getInfo</tt>, <tt>getBicla</tt> e <tt>returnBicla</tt>
         não estão implementadas.
         Para já vamos compilar e executar o servidor sem estas operações estarem concluídas.
         </li>
@@ -378,7 +376,7 @@ Vamos agora usar o <b>cliente</b> <tt>station-ws-cli</tt> para testar o servidor
     </li>
     <ul>
         <li>
-        Implementar <tt>getInfo</tt>, <tt>getBina</tt> e <tt>returnBina</tt>
+        Implementar <tt>getInfo</tt>, <tt>getBicla</tt> e <tt>returnBicla</tt>
         de acordo com o <a href="./Software/enunciado-proj-SD-1718.pdf">enunciado do projeto</a>
         (em especial, as secções 1.3 e 1.4).
         </li>
