@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    WSDL contract for Biclas service.
+
+    This WSDL defines the operations provided by the Web Service, and should not be modified. 
+    For more information, consult sections 
+    wsdl:service, wsdl:portType, wsdl:types and wsdl:binding below 
+-->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://ws.binas.org/"
+    targetNamespace="http://ws.binas.org/" name="BiclasWebService">
+    <types>
+        <xs:schema targetNamespace="http://ws.binas.org/" version="1.0">
+            <!-- main operations data types -->
+            <xs:complexType name="coordinatesView">
+                <xs:sequence>
+                    <xs:element name="x" type="xs:int" minOccurs="0" />
+                    <xs:element name="y" type="xs:int" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="stationView">
+                <xs:sequence>
+                    <xs:element name="id" type="xs:string" />
+                    <xs:element name="coordinate" type="tns:coordinatesView"
+                        minOccurs="0" />
+                    <xs:element name="capacity" type="xs:int" />
+                    <xs:element name="totalGets" type="xs:int" />
+                    <xs:element name="totalReturns" type="xs:int" />
+                    <xs:element name="availableBiclas" type="xs:int" />
+                    <xs:element name="freeDocks" type="xs:int" />
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="userView">
+                <xs:sequence>
+                    <xs:element name="email" type="xs:string" minOccurs="0" />
+                    <xs:element name="hasBicla" type="xs:boolean" minOccurs="0" />
+                    <xs:element name="credit" type="xs:int" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+
+
+            <xs:complexType name="listStations">
+                <xs:sequence>
+                    <xs:element name="numberOfStations" type="xs:int"
+                        maxOccurs="1" minOccurs="0" />
+                    <xs:element name="coordinates" type="tns:coordinatesView"
+                        maxOccurs="1" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="listStations" type="tns:listStations" />
+
+            <xs:complexType name="listStationsResponse">
+                <xs:sequence>
+                    <xs:element name="stations" type="tns:stationView"
+                        minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="listStationsResponse" type="tns:listStationsResponse" />
+
+
+            <xs:complexType name="getInfoStation">
+                <xs:sequence>
+                    <xs:element name="stationId" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getInfoStation" type="tns:getInfoStation" />
+
+            <xs:complexType name="getInfoStationResponse">
+                <xs:sequence>
+                    <xs:element name="station" type="tns:stationView"
+                        minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getInfoStationResponse" type="tns:getInfoStationResponse" />
+
+
+            <xs:complexType name="getCredit">
+                <xs:sequence>
+                    <xs:element name="email" type="xs:string" maxOccurs="1"
+                        minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getCredit" type="tns:getCredit" />
+
+            <xs:complexType name="getCreditResponse">
+                <xs:sequence>
+                    <xs:element name="getCredit" type="xs:int" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getCreditResponse" type="tns:getCreditResponse" />
+
+
+            <xs:complexType name="activateUser">
+                <xs:sequence>
+                    <xs:element name="email" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="activateUser" type="tns:activateUser" />
+
+            <xs:complexType name="activateUserResponse">
+                <xs:sequence>
+                    <xs:element name="user" type="tns:userView" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="activateUserResponse" type="tns:activateUserResponse" />
+
+
+            <xs:complexType name="rentBicla">
+                <xs:sequence>
+                    <xs:element name="stationId" type="xs:string" minOccurs="0" />
+                    <xs:element name="email" type="xs:string" maxOccurs="1"
+                        minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="rentBicla" type="tns:rentBicla" />
+
+            <xs:complexType name="rentBiclaResponse">
+                <xs:sequence />
+            </xs:complexType>
+            <xs:element name="rentBiclaResponse" type="tns:rentBiclaResponse" />
+
+
+            <xs:complexType name="returnBicla">
+                <xs:sequence>
+                    <xs:element name="stationId" type="xs:string" minOccurs="0" />
+                    <xs:element name="email" type="xs:string" maxOccurs="1"
+                        minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="returnBicla" type="tns:returnBicla" />
+
+            <xs:complexType name="returnBiclaResponse">
+                <xs:sequence />
+            </xs:complexType>
+            <xs:element name="returnBiclaResponse" type="tns:returnBiclaResponse" />
+
+
+            <xs:complexType name="InvalidStation">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="InvalidStation" type="tns:InvalidStation" />
+
+            <xs:complexType name="AlreadyHasBicla">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="AlreadyHasBicla" type="tns:AlreadyHasBicla" />
+
+            <xs:complexType name="UserNotExists">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="UserNotExists" type="tns:UserNotExists" />
+
+            <xs:complexType name="EmailExists">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="EmailExists" type="tns:EmailExists" />
+
+            <xs:complexType name="FullStation">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="FullStation" type="tns:FullStation" />
+
+            <xs:complexType name="InvalidEmail">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="InvalidEmail" type="tns:InvalidEmail" />
+
+            <xs:complexType name="NoBiclaAvail">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="NoBiclaAvail" type="tns:NoBiclaAvail" />
+
+            <xs:complexType name="NoBiclaRented">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="NoBiclaRented" type="tns:NoBiclaRented" />
+
+            <xs:complexType name="NoCredit">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="NoCredit" type="tns:NoCredit" />
+
+            <!-- test control operations data types -->
+            <xs:complexType name="test_ping">
+                <xs:sequence>
+                    <xs:element name="input_message" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="test_ping" type="tns:test_ping" />
+
+            <xs:complexType name="test_pingResponse">
+                <xs:sequence>
+                    <xs:element name="return" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="test_pingResponse" type="tns:test_pingResponse" />
+
+            <xs:complexType name="test_clear">
+                <xs:sequence />
+            </xs:complexType>
+            <xs:element name="test_clear" type="tns:test_clear" />
+
+            <xs:complexType name="test_clearResponse">
+                <xs:sequence />
+            </xs:complexType>
+            <xs:element name="test_clearResponse" type="tns:test_clearResponse" />
+
+            <xs:complexType name="test_init_station">
+                <xs:sequence>
+                    <xs:element name="station_id" type="xs:string" />
+                    <xs:element name="x" type="xs:int" />
+                    <xs:element name="y" type="xs:int" />
+                    <xs:element name="capacity" type="xs:int" />
+                    <xs:element name="return_prize" type="xs:int" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="test_init_station" type="tns:test_init_station" />
+
+            <xs:complexType name="test_init_stationResponse">
+                <xs:sequence />
+            </xs:complexType>
+            <xs:element name="test_init_stationResponse" type="tns:test_init_stationResponse" />
+
+            <xs:complexType name="test_init">
+                <xs:sequence>
+                    <xs:element name="user_initial_points" type="xs:int" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="test_init" type="tns:test_init" />
+
+            <xs:complexType name="test_initResponse">
+                <xs:sequence />
+            </xs:complexType>
+            <xs:element name="test_initResponse" type="tns:test_initResponse" />
+
+            <xs:complexType name="BadInit">
+                <xs:sequence>
+                    <xs:element name="message" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="BadInit" type="tns:BadInit" />
+
+        </xs:schema>
+    </types>
+
+
+    <!-- Messages (use elements defined in the schema) -->
+
+    <!-- main operations -->
+    <message name="listStations">
+        <part name="parameters" element="tns:listStations" />
+    </message>
+    <message name="listStationsResponse">
+        <part name="parameters" element="tns:listStationsResponse" />
+    </message>
+
+    <message name="getInfoStation">
+        <part name="parameters" element="tns:getInfoStation" />
+    </message>
+    <message name="getInfoStationResponse">
+        <part name="parameters" element="tns:getInfoStationResponse" />
+    </message>
+
+    <message name="getCredit">
+        <part name="parameters" element="tns:getCredit" />
+    </message>
+    <message name="getCreditResponse">
+        <part name="parameters" element="tns:getCreditResponse" />
+    </message>
+
+    <message name="activateUser">
+        <part name="parameters" element="tns:activateUser" />
+    </message>
+    <message name="activateUserResponse">
+        <part name="parameters" element="tns:activateUserResponse" />
+    </message>
+
+    <message name="rentBicla">
+        <part name="parameters" element="tns:rentBicla" />
+    </message>
+    <message name="rentBiclaResponse">
+        <part name="parameters" element="tns:rentBiclaResponse" />
+    </message>
+
+    <message name="returnBicla">
+        <part name="parameters" element="tns:returnBicla" />
+    </message>
+    <message name="returnBiclaResponse">
+        <part name="parameters" element="tns:returnBiclaResponse" />
+    </message>
+
+    <message name="InvalidStation">
+        <part name="fault" element="tns:InvalidStation" />
+    </message>
+
+    <message name="UserNotExists">
+        <part name="fault" element="tns:UserNotExists" />
+    </message>
+
+    <message name="InvalidEmail">
+        <part name="fault" element="tns:InvalidEmail" />
+    </message>
+
+    <message name="EmailExists">
+        <part name="fault" element="tns:EmailExists" />
+    </message>
+
+    <message name="NoBiclaAvail">
+        <part name="fault" element="tns:NoBiclaAvail" />
+    </message>
+
+    <message name="NoCredit">
+        <part name="fault" element="tns:NoCredit" />
+    </message>
+
+    <message name="AlreadyHasBicla">
+        <part name="fault" element="tns:AlreadyHasBicla" />
+    </message>
+
+    <message name="FullStation">
+        <part name="fault" element="tns:FullStation" />
+    </message>
+
+    <message name="NoBiclaRented">
+        <part name="fault" element="tns:NoBiclaRented" />
+    </message>
+
+    <!-- test control operations -->
+    <message name="test_ping">
+        <part name="parameters" element="tns:test_ping"/>
+    </message>
+    <message name="test_pingResponse">
+        <part name="parameters" element="tns:test_pingResponse"/>
+    </message>
+
+    <message name="test_clear">
+        <part name="parameters" element="tns:test_clear"/>
+    </message>
+    <message name="test_clearResponse">
+        <part name="parameters" element="tns:test_clearResponse"/>
+    </message>
+
+    <message name="test_init_station">
+        <part name="parameters" element="tns:test_init_station"/>
+    </message>
+    <message name="test_init_stationResponse">
+        <part name="parameters" element="tns:test_init_stationResponse"/>
+    </message>
+
+    <message name="test_init">
+        <part name="parameters" element="tns:test_init"/>
+    </message>
+    <message name="test_initResponse">
+        <part name="parameters" element="tns:test_initResponse"/>
+    </message>
+
+    <message name="BadInit">
+        <part name="fault" element="tns:BadInit"/>
+    </message>
+
+
+    <!-- Port Type (Interface) -->
+    <portType name="BiclasPortType">
+        <!-- main operations -->
+        <operation name="listStations">
+            <input wsam:Action="http://ws.binas.org/Biclas/listStationsRequest"
+                message="tns:listStations" />
+            <output wsam:Action="http://ws.binas.org/Biclas/listStationsResponse"
+                message="tns:listStationsResponse" />
+        </operation>
+
+        <operation name="getInfoStation">
+            <input wsam:Action="http://ws.binas.org/Biclas/getInfoStationRequest"
+                message="tns:getInfoStation" />
+            <output wsam:Action="http://ws.binas.org/Biclas/getInfoStationResponse"
+                message="tns:getInfoStationResponse" />
+            <fault message="tns:InvalidStation" name="InvalidStation"
+                wsam:Action="http://ws.binas.org/Biclas/getInfoStation/Fault/InvalidStation" />
+        </operation>
+
+        <operation name="getCredit">
+            <input wsam:Action="http://ws.binas.org/Biclas/getCreditRequest"
+                message="tns:getCredit" />
+            <output wsam:Action="http://ws.binas.org/Biclas/getCreditResponse"
+                message="tns:getCreditResponse" />
+            <fault message="tns:UserNotExists" name="UserNotExists"
+                wsam:Action="http://ws.binas.org/Biclas/getCredit/Fault/UserNotExists" />
+        </operation>
+
+        <operation name="activateUser">
+            <input wsam:Action="http://ws.binas.org/Biclas/activateUserRequest"
+                message="tns:activateUser" />
+            <output wsam:Action="http://ws.binas.org/Biclas/activateUserResponse"
+                message="tns:activateUserResponse" />
+            <fault message="tns:InvalidEmail" name="InvalidEmail"
+                wsam:Action="http://ws.binas.org/Biclas/activateUser/Fault/InvalidEmail" />
+            <fault message="tns:EmailExists" name="EmailExists"
+                wsam:Action="http://ws.binas.org/Biclas/activateUser/Fault/EmailExists" />
+        </operation>
+
+        <operation name="rentBicla">
+            <input wsam:Action="http://ws.binas.org/Biclas/rentBiclaRequest"
+                message="tns:rentBicla" />
+            <output wsam:Action="http://ws.binas.org/Biclas/rentBiclaResponse"
+                message="tns:rentBiclaResponse" />
+            <fault message="tns:InvalidStation" name="InvalidStation"
+                wsam:Action="http://ws.binas.org/Biclas/rentBicla/Fault/InvalidStation" />
+            <fault message="tns:NoBiclaAvail" name="NoBiclaAvail"
+                wsam:Action="http://ws.binas.org/Biclas/rentBicla/Fault/NoBiclaAvail" />
+            <fault message="tns:NoCredit" name="NoCredit"
+                wsam:Action="http://ws.binas.org/Biclas/rentBicla/Fault/NoCredit" />
+            <fault message="tns:AlreadyHasBicla" name="AlreadyHasBicla"
+                wsam:Action="http://ws.binas.org/Biclas/rentBicla/Fault/AlreadyHasBicla" />
+            <fault message="tns:UserNotExists" name="UserNotExists"
+                wsam:Action="http://ws.binas.org/Biclas/rentBicla/Fault/UserNotExists" />
+        </operation>
+
+        <operation name="returnBicla">
+            <input wsam:Action="http://ws.binas.org/Biclas/returnBiclaRequest"
+                message="tns:returnBicla" />
+            <output wsam:Action="http://ws.binas.org/Biclas/returnBiclaResponse"
+                message="tns:returnBiclaResponse" />
+            <fault message="tns:InvalidStation" name="InvalidStation"
+                wsam:Action="http://ws.binas.org/Biclas/returnBicla/Fault/InvalidStation" />
+            <fault message="tns:FullStation" name="FullStation"
+                wsam:Action="http://ws.binas.org/Biclas/returnBicla/Fault/FullStation" />
+            <fault message="tns:NoBiclaRented" name="NoBiclaRented"
+                wsam:Action="http://ws.binas.org/Biclas/returnBicla/Fault/NoBiclaRented" />
+            <fault message="tns:UserNotExists" name="UserNotExists"
+                wsam:Action="http://ws.binas.org/Biclas/returnBicla/Fault/UserNotExists" />
+        </operation>
+
+        <!-- test control operations -->
+        <operation name="test_ping">
+            <input wsam:Action="http://ws.binas.org/Biclas/test_pingRequest" message="tns:test_ping"/>
+            <output wsam:Action="http://ws.binas.org/Biclas/test_pingResponse" message="tns:test_pingResponse"/>
+        </operation>
+
+        <operation name="test_clear">
+            <input wsam:Action="http://ws.binas.org/Biclas/test_clearRequest" message="tns:test_clear"/>
+            <output wsam:Action="http://ws.binas.org/Biclas/test_clearResponse" message="tns:test_clearResponse"/>
+        </operation>
+
+        <operation name="test_init_station">
+            <input wsam:Action="http://ws.binas.org/Biclas/test_init_stationRequest" message="tns:test_init_station"/>
+            <output wsam:Action="http://ws.binas.org/Biclas/test_init_stationResponse" message="tns:test_init_stationResponse"/>
+            <fault message="tns:BadInit" name="BadInit" wsam:Action="http://ws.binas.org/Biclas/test_init_station/Fault/BadInit"/>
+        </operation>
+
+        <operation name="test_init">
+            <input wsam:Action="http://ws.binas.org/Biclas/test_initRequest" message="tns:test_init"/>
+            <output wsam:Action="http://ws.binas.org/Biclas/test_initResponse" message="tns:test_initResponse"/>
+            <fault message="tns:BadInit" name="BadInit" wsam:Action="http://ws.binas.org/Biclas/test_init/Fault/BadInit"/>
+        </operation>
+
+    </portType>
+
+
+    <!-- SOAP/HTTP Binding -->
+    <binding name="BiclasPortBinding" type="tns:BiclasPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+            style="document" />
+        <!-- main operations -->
+        <operation name="listStations">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+
+        <operation name="getInfoStation">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="InvalidStation">
+                <soap:fault name="InvalidStation" use="literal" />
+            </fault>
+        </operation>
+
+        <operation name="getCredit">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="UserNotExists">
+                <soap:fault name="UserNotExists" use="literal" />
+            </fault>
+        </operation>
+
+        <operation name="activateUser">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="InvalidEmail">
+                <soap:fault name="InvalidEmail" use="literal" />
+            </fault>
+            <fault name="EmailExists">
+                <soap:fault name="EmailExists" use="literal" />
+            </fault>
+        </operation>
+
+        <operation name="rentBicla">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="InvalidStation">
+                <soap:fault name="InvalidStation" use="literal" />
+            </fault>
+            <fault name="NoBiclaAvail">
+                <soap:fault name="NoBiclaAvail" use="literal" />
+            </fault>
+            <fault name="NoCredit">
+                <soap:fault name="NoCredit" use="literal" />
+            </fault>
+            <fault name="AlreadyHasBicla">
+                <soap:fault name="AlreadyHasBicla" use="literal" />
+            </fault>
+            <fault name="UserNotExists">
+                <soap:fault name="UserNotExists" use="literal" />
+            </fault>
+        </operation>
+
+        <operation name="returnBicla">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+            <fault name="InvalidStation">
+                <soap:fault name="InvalidStation" use="literal" />
+            </fault>
+            <fault name="FullStation">
+                <soap:fault name="FullStation" use="literal" />
+            </fault>
+            <fault name="NoBiclaRented">
+                <soap:fault name="NoBiclaRented" use="literal" />
+            </fault>
+            <fault name="UserNotExists">
+                <soap:fault name="UserNotExists" use="literal" />
+            </fault>
+        </operation>
+
+        <!-- test control operations -->
+        <operation name="test_ping">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="test_clear">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="test_init_station">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="BadInit">
+                <soap:fault name="BadInit" use="literal"/>
+            </fault>
+        </operation>
+
+        <operation name="test_init">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="BadInit">
+                <soap:fault name="BadInit" use="literal"/>
+            </fault>
+        </operation>
+
+    </binding>
+
+
+    <!-- Service -->
+    <service name="BiclasService">
+        <port name="BiclasPort" binding="tns:BiclasPortBinding">
+            <soap:address location="http://localhost:8080/binas-ws/endpoint" />
+        </port>
+    </service>
+
+</definitions>

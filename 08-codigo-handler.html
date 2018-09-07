@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Código de um Handler</title>
+</head>
+
+<body>
+
+<div class="Código">
+    <p>
+        <a href="./index.html">Labs CD</a> &gt;
+        <a href="./08-SOAP Handlers (Web Services 3).html">SOAP Handlers</a>
+    </p>
+</div>
+
+<h2 id="code">Código de um <i>Handler</i></h2>
+<p>
+</p><pre><span class="kwd">package</span><span class="pln"> example</span><span class="pun">.</span><span class="pln">ws</span><span class="pun">.</span><span class="pln">handler</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">Set</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">xml</span><span class="pun">.</span><span class="kwd">namespace</span><span class="pun">.</span><span class="typ">QName</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">xml</span><span class="pun">.</span><span class="pln">ws</span><span class="pun">.</span><span class="pln">handler</span><span class="pun">.</span><span class="typ">MessageContext</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">xml</span><span class="pun">.</span><span class="pln">ws</span><span class="pun">.</span><span class="pln">handler</span><span class="pun">.</span><span class="pln">soap</span><span class="pun">.</span><span class="typ">SOAPHandler</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> javax</span><span class="pun">.</span><span class="pln">xml</span><span class="pun">.</span><span class="pln">ws</span><span class="pun">.</span><span class="pln">handler</span><span class="pun">.</span><span class="pln">soap</span><span class="pun">.</span><span class="typ">SOAPMessageContext</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">EmptyHandler</span><span class="pln"> </span><span class="kwd">implements</span><span class="pln"> </span><span class="typ">SOAPHandler</span><soapmessagecontext><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="com">/**
+     * Gets the names of the header blocks that can be processed by this Handler instance.
+     * If null, processes all.
+     */</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Set</span><qname><span class="pln"> getHeaders</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="com">/**
+     * The handleMessage method is invoked for normal processing of inbound and
+     * outbound messages.
+     */</span><span class="pln">
+     </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">boolean</span><span class="pln"> </span><b><span class="pln">handleMessage</span></b><span class="pun">(</span><span class="typ">SOAPMessageContext</span><span class="pln"> smc</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="com">/** The handleFault method is invoked for fault message processing. */</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">boolean</span><span class="pln"> handleFault</span><span class="pun">(</span><span class="typ">SOAPMessageContext</span><span class="pln"> smc</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="com">/**
+     * Called at the conclusion of a message exchange pattern just prior to the
+     * JAX-WS runtime dispatching a message, fault or exception.
+     */</span><span class="pln">
+    </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> close</span><span class="pun">(</span><span class="typ">MessageContext</span><span class="pln"> messageContext</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+    </span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">}</span></qname></soapmessagecontext></pre>
+<p></p>
+
+<p>&nbsp;</p>
+<h3 id="return">Processamento da mensagem</h3>
+
+<p>
+O retorno do método <tt>handleMessage()</tt> determina de que forma
+prossegue o processamento da mensagem.<br>
+Se for 'true' o processamento deve prosseguir;
+se for 'false' bloqueia o processamento da mensagem,
+mudando-lhe o sentido e
+fazendo-a voltar para o cliente.
+</p>
+<p>
+A utilização de <b>exceções</b> permite modificar o normal
+processamento das mensagens SOAP:
+</p>
+<ul>
+<li>
+Se um <i>handler</i> atirar uma exceção <tt>java.lang.RuntimeException</tt> (ou um sub-tipo desta classe), tal
+indica que o processamento normal da mensagem deve parar.
+O método <tt>close()</tt> é invocado nos <i>handlers</i> que entretanto já tinham
+sido chamados, o sentido da mensagem é invertido
+e a excepção é despachada.
+Se a mensagem tinha o sentido de saída (<i>outbound</i>),
+é gerada uma mensagem SOAP automaticamente
+preenchida com uma SOAP <i>Fault</i>.
+</li>
+<li>
+Se um <i>handler</i> atirar uma exceção <tt>javax.xml.ws.soap.SOAPFaultException</tt>
+(que é um sub-tipo de <tt>javax.xml.ws.ProtocolException</tt>),
+indica que o processamento normal da mensagem deve parar
+e que se deve iniciar o processamento de mensagem de erro.
+O sentido da mensagem é invertido,
+se a mensagem não é ainda uma mensagem de Fault
+é substituída por uma mensagem de Fault,
+e o método <tt>handleFault()</tt> é invocado para o próximo <i>Handler</i> caso exista,
+para que seja preenchida manualmente a informação da <i>Fault</i>.
+</li>
+</ul>
+
+<hr>
+
+<div class="rodape">
+    <p>
+        © Docentes de Computação Distribuída, Dep. Eng. Informática, <a href="https://www.ulusofona.pt/">Universidade Lusófona</a><br>
+    </p>
+</div>
+</body></html>

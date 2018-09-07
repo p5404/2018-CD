@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>SOAP</title>
+</head>
+
+<body>
+
+<div>
+    <p>
+        <a href=".index.html">Labs CD</a> &gt;
+        <a href="./08-SOAP Handlers (Web Services 3).html">SOAP Handlers</a>
+    </p>
+</div>
+
+<h2>SOAP</h2>
+
+<img src="./images/envelope.png" height="36" /><br />
+
+<p>
+Uma mensagem SOAP é um documento XML
+designado por <i>envelope</i>.
+O cabeçalho (<i>header</i>) permite adicionar extensões à mensagem, permitindo assim a composição de protocolos adicionais para a segurança, por exemplo.<br />
+O corpo (<i>body</i>) contém os dados de negócio da mensagem ou então o elemento de falha (<i>fault</i>) com informação de erro.
+</p>
+
+
+<!--h2 id="structure">Estrutura de mensagens SOAP</h2-->
+<!--p>
+O cabeçalho transporta dados de sistema para serem processados pelas bibliotecas de Web Services e<br />
+o corpo transporta dados de negócio para serem processados pelas aplicações.
+</p-->
+<p>
+Os documentos seguintes são exemplos de mensagens SOAP
+correspondentes a um par pedido-resposta.
+<!-- trocado por um cliente com um Web Service. -->
+</p>
+<pre>
+&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns1="urn:hello"&gt;
+    &lt;soapenv:Body&gt;
+        &lt;ns1:sayHello&gt;
+            &lt;ns1:name&gt;friend&lt;/ns1:name&gt;
+        &lt;/ns1:sayHello&gt;
+    &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;<!--/pre>
+<p>
+<pre-->
+
+&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                     xmlns:ns1="urn:hello"&gt;
+    &lt;soapenv:Body&gt;
+        &lt;ns1:sayHelloResponse&gt;
+            &lt;ns1:return&gt;Hello friend!&lt;/ns1:return&gt;
+        &lt;/ns1:sayHelloResponse&gt;
+    &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+</pre>
+
+<p>&nbsp;</p>
+<h2>Composição/processamento de mensagens SOAP</h2>
+
+<p>
+A SAAJ (<i>SOAP with Attachments API for Java</i>) é uma
+biblioteca que estende o XML DOM, adaptando-o
+para o SOAP, fornecendo métodos específicos
+para tratar as mensagens.
+</p>
+
+<p>
+Na biblioteca SAAJ,
+uma mensagem SOAP tem a seguinte estrutura de objetos:
+</p>
+<p>
+<img src="./images/soap-message.gif" alt="SOAP Message" height="250">
+</p>
+<p>
+A <tt>SOAPMessage</tt> contém várias partes.
+A primeira parte é uma <tt>SOAPPart</tt>, que contém um <tt>SOAPEnvelope</tt>.<br />
+Um <tt>SOAPEnvelope</tt> contém um <tt>SOAPBody</tt> e opcionalmente um <tt>SOAPHeader</tt>.<br />
+Dentro destes, podem ser colocados <tt>SOAPElement</tt>.<br />
+</p>
+<p>
+Os elementos devem ser sempre especificados com espaço de nomes (<i>namespace</i>),
+para evitar conflitos.
+</p>
+
+<p>
+Os objetos da biblioteca SAAJ estão no pacote <tt>javax.xml.soap.*</tt><br />
+O código seguinte mostra como se constrói uma mensagem simples com um elemento no corpo.
+</p>
+<p>
+<pre>
+    ...
+
+    MessageFactory mf = MessageFactory.newInstance();
+
+    SOAPMessage soapMessage = mf.createMessage();
+    SOAPPart soapPart = soapMessage.getSOAPPart();
+    SOAPEnvelope soapEnvelope = soapPart.getEnvelope();
+    SOAPBody soapBody = soapEnvelope.getBody();
+    Name name = soapEnvelope.createName("sayHello", "ns1", "urn:hello");
+    SOAPElement element = soapBody.addChildElement(name);
+    element.addTextNode("friend");
+
+    ...
+
+    soapMessage.writeTo(System.out);
+    System.out.println();
+
+    ...
+</pre>
+</p>
+
+
+<p>&nbsp;</p>
+<h3 id="exemplos">Exemplos SOAP e XML</h3>
+
+<img src="./images/xml.png" height="26" />
+&nbsp;
+
+<p>
+Os exemplos seguintes mostram em detalhe como modificar as mensagens SOAP e
+como enviar mensagem SOAP directamente sem <i>stubs</i>.
+</p>
+<ul>
+    <li>
+        <a href="./Software/soap.zip">SOAP
+        <img src="./images/zip.png" alt="ZIP"></a>
+        - SOAP API for JAVA (SAAJ)<br />
+    </li>
+</ul>
+<p>
+Como a base do SOAP é o XML, seguem-se também exemplos das tecnologias base de processamento XML:
+SAX, DOM, XSD, XPath.
+<ul>
+    <li>
+        <a href="./Software/xml.zip">XML
+        <img src="./images/zip.png" alt="ZIP"></a>
+        - Processamento de XML em JAVA<br />
+    </li>
+</ul>
+
+<hr />
+
+<div class="rodape">
+    <p>
+        © Docentes de Computação Distribuída, Dep. Eng. Informática, <a href="https://www.ulusofona.pt/">Universidade Lusófona</a><br>
+    </p>
+</div>
+
+
+</body>
+</html>
